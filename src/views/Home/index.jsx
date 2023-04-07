@@ -5,8 +5,9 @@ import PokemonsList from "./components/pokemonList";
 export default function Home() {
   const { getPokemons, pokemons } = useContext(PokemonsContext);
   useEffect(() => {
-    getPokemons().catch(null);
-  }, []);
+    getPokemons();
+  },[]);
+
   return (
     <div>
       <PokemonsList pokemons={pokemons} />

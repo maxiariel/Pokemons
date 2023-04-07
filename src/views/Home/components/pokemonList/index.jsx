@@ -1,12 +1,11 @@
+import PokemonItem from "./PokemonItem";
+
 export default function PokemonsList({ pokemons }) {
-  console.log(pokemons);
   return (
     <div>
-      {pokemons?.map((value, index) => {
+      {pokemons.results?.map((value, index) => {
         return (
-          <div key={index}>
-            <p>{value.name}</p>
-          </div>
+          <PokemonItem key={index} {...value} />
         );
       })}
     </div>

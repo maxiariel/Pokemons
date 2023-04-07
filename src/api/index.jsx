@@ -1,4 +1,4 @@
-export default async function ApiCall({ url, method = "get", body, headers }) {
+export default async function ApiCall({ url, method = "GET", body, headers }) {
   try {
     const response = await fetch(url, {
       method,
