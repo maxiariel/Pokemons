@@ -1,5 +1,5 @@
 import { useEffect, useContext, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import PokemonsContext from "../../context/pokemons";
 import "./style.css";
 import "./typeColor.css";
@@ -25,6 +25,9 @@ export default function PokemonDetail() {
         <p className="p-pokemon-detail"> Abilities: <span>{abilitiesPokemon1}</span> <span>{abilitiesPokemon2}</span></p>
 
         </div>
+        <button className="button-back">
+          <Link to={"/"} className="link-back" >Back Search</Link>
+        </button>
       </div>
     </div>
   );
