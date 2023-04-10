@@ -6,6 +6,9 @@ export default function PokemonProvider({ children }) {
   const [pokemons, setPokemons] = useState([]);
   const [pokemonDetail, setPokemonDetail] = useState({});
   const [imgPokemon, setImgPokemon] = useState({});
+  const [colorPokemon, setColorPokemon] = useState("")
+  const [abilitiesPokemon1, setAbilitiesPokemon1] = useState([])
+  const [abilitiesPokemon2, setAbilitiesPokemon2] = useState([])
 
   const getPokemons = async () => {
     try {
@@ -26,10 +29,17 @@ export default function PokemonProvider({ children }) {
       });
       setPokemonDetail(resultPokemonDetail);
       setImgPokemon(resultPokemonDetail.sprites)
+      setColorPokemon(resultPokemonDetail.types[0].type)
+      setAbilitiesPokemon1(resultPokemonDetail.abilities[0].ability.name)
+      setAbilitiesPokemon2(resultPokemonDetail.abilities[1].ability.name)
+
+      
     } catch (error) {
       setPokemonDetail({});
+      setImgPokemon({})
     }
-  };
+  };  
+  
 
   return (
     <PokemonsContext.Provider
@@ -39,6 +49,9 @@ export default function PokemonProvider({ children }) {
         getPokemonDetail,
         pokemonDetail,
         imgPokemon,
+        colorPokemon,
+        abilitiesPokemon1,
+        abilitiesPokemon2
       }}
     >
       {children}
