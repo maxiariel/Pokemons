@@ -6,7 +6,7 @@ export default function AllRoutes() {
   return (
     <Routes>
       <Route path="/" exact element={<Home />} />
-      <Route path="/pokemon/:id" element={<PokemonDetail />}/>
+      <Route path="/pokemon/:id" element={<PokemonDetail />} />
     </Routes>
   );
 }

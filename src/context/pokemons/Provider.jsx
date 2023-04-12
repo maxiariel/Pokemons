@@ -6,9 +6,9 @@ export default function PokemonProvider({ children }) {
   const [pokemons, setPokemons] = useState([]);
   const [pokemonDetail, setPokemonDetail] = useState({});
   const [imgPokemon, setImgPokemon] = useState({});
-  const [colorPokemon, setColorPokemon] = useState("")
-  const [abilitiesPokemon1, setAbilitiesPokemon1] = useState([])
-  const [abilitiesPokemon2, setAbilitiesPokemon2] = useState([])
+  const [colorPokemon, setColorPokemon] = useState("");
+  const [abilitiesPokemon1, setAbilitiesPokemon1] = useState([]);
+  const [abilitiesPokemon2, setAbilitiesPokemon2] = useState([]);
 
   const getPokemons = async () => {
     try {
@@ -28,19 +28,15 @@ export default function PokemonProvider({ children }) {
         url: `https://pokeapi.co/api/v2/pokemon/${id}`,
       });
       setPokemonDetail(resultPokemonDetail);
-      setImgPokemon(resultPokemonDetail.sprites)
-      setColorPokemon(resultPokemonDetail.types[0].type)
-      setAbilitiesPokemon1(resultPokemonDetail.abilities[0].ability.name)
-      setAbilitiesPokemon2(resultPokemonDetail.abilities[1].ability.name)
-
-      
+      setImgPokemon(resultPokemonDetail?.sprites);
+      setColorPokemon(resultPokemonDetail?.types[0].type);
+      setAbilitiesPokemon1(resultPokemonDetail?.abilities[0].ability.name);
+      setAbilitiesPokemon2(resultPokemonDetail?.abilities[1].ability.name);
     } catch (error) {
       setPokemonDetail({});
-      setImgPokemon({})
+      setImgPokemon({});
     }
-  };  
-  
-
+  };
   return (
     <PokemonsContext.Provider
       value={{
@@ -51,7 +47,7 @@ export default function PokemonProvider({ children }) {
         imgPokemon,
         colorPokemon,
         abilitiesPokemon1,
-        abilitiesPokemon2
+        abilitiesPokemon2,
       }}
     >
       {children}
