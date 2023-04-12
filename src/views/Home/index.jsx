@@ -11,17 +11,13 @@ export default function Home() {
   const handleSearchPokemon = ({ target: { value } }) => {
     return setSerchPokemon(value);
   };
-
-  const resultMap = pokemons.results?.map((value) => {
-    return value?.name;
-  });
-
   const handleSearchClick = () => {
-    resultMap?.filter((value) => {
-      return value?.includes(searchPokemon);
+    pokemons.results?.map((value) => {
+      return value?.name.filter((value) => {
+        return value?.name.includes(searchPokemon);
+      });
     });
   };
-
   return (
     <div className="search-container">
       <SearchPokemon onValue={searchPokemon} onSearch={handleSearchPokemon} />
